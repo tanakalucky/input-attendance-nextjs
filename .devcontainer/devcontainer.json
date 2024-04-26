@@ -1,25 +1,25 @@
 {
-    "service": "input-attendance-nextjs",
-    "dockerComposeFile": "../docker-compose.yml",
-    "portsAttributes": {
+  "service": "input-attendance-nextjs",
+  "dockerComposeFile": "../docker-compose.yml",
+  "portsAttributes": {
     "onAutoForward": {
-        "label": "Application",
-        "onAutoForward": "ignore"
-      }
-    },
-    "workspaceFolder": "/input-attendance-nextjs",
-    "customizations": {
-      "vscode": {
-        "extensions": ["eamodio.gitlens", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
-        "settings": {
-          "prettier.configPath": ".prettierrc.json",
-          "editor.defaultFormatter": "esbenp.prettier-vscode",
-          "editor.formatOnSave": true,
-          "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": true
-          },
-          "editor.tabSize": 2
-        }
+      "label": "Application",
+      "onAutoForward": "ignore"
+    }
+  },
+  "workspaceFolder": "/input-attendance-nextjs",
+  "customizations": {
+    "vscode": {
+      "extensions": ["eamodio.gitlens", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        "prettier.configPath": ".prettierrc.json",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.tabSize": 2
       }
     }
+  }
 }
