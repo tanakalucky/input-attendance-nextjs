@@ -28,7 +28,7 @@ export function Header() {
         <span className='sr-only'>Acme Inc</span>
       </Link>
       <nav className='hidden space-x-4 md:flex flex-1 text-sm'>
-        <Link className='font-medium hover:underline' href='#'>
+        <Link className='font-medium hover:underline' href='/upload'>
           アップロード
         </Link>
         <Link className='font-medium hover:underline' href='#'>

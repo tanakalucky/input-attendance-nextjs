@@ -4,6 +4,7 @@ import '@/app/globals.css';
 import NextAuthProvider from '@/app/providers/NextAuth';
 import { Session } from 'next-auth';
 import { Header } from '@/components/layouts/header';
+import clsx from 'clsx';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body className={inter.className}>
+      <body className={clsx(inter.className)}>
         <NextAuthProvider session={session}>
           <Header />
           {children}
