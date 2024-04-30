@@ -23,7 +23,7 @@ import { SVGProps } from 'react';
 export function Header() {
   return (
     <header className='flex items-center h-16 px-4 border-b w-full md:px-6'>
-      <Link className='mr-4' href='#'>
+      <Link className='mr-4' href='/'>
         <PackageIcon className='h-6 w-6' />
         <span className='sr-only'>Acme Inc</span>
       </Link>
