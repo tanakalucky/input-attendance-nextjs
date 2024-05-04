@@ -23,9 +23,20 @@ To read more about using these font, please visit the Next.js documentation:
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { ChangeEvent, SVGProps, useRef, useState } from 'react';
-import getFileSizeWithUnit from '@/app/utils/fileUtils';
+import { getFileSizeWithUnit, fileToBase64 } from '@/app/utils/fileUtils';
+import { useMutation } from 'urql';
+
+const uploadMutation = `
+  mutation UploadFile($encodedFile: String!) {
+    upload(encodedFile: $encodedFile) {
+      statusCode
+    }
+  }
+`;
 
 export function FileUpload() {
+  const [result, upload] = useMutation(uploadMutation);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => inputRef.current?.click();
@@ -39,6 +50,13 @@ export function FileUpload() {
     if (!file) return;
 
     setFile(file);
+  };
+
+  const handleSubmit = async () => {
+    const encodedFile = file ? await fileToBase64(file) : '';
+
+    const variables = { encodedFile };
+    upload(variables).then((result) => console.log(result));
   };
 
   return (
@@ -88,7 +106,7 @@ export function FileUpload() {
             </div>
           </div>
         )}
-        <Button className='w-full' type='submit'>
+        <Button className='w-full' onClick={handleSubmit} disabled={!file || result.fetching}>
           Upload
         </Button>
       </div>

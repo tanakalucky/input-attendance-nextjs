@@ -5,6 +5,7 @@ import NextAuthProvider from '@/app/providers/NextAuth';
 import { Session } from 'next-auth';
 import { Header } from '@/components/layouts/header';
 import clsx from 'clsx';
+import GraphqlProvider from '@/app/providers/graphql';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,8 +25,10 @@ export default function RootLayout({
     <html lang='ja'>
       <body className={clsx(inter.className)}>
         <NextAuthProvider session={session}>
-          <Header />
-          {children}
+          <GraphqlProvider>
+            <Header />
+            {children}
+          </GraphqlProvider>
         </NextAuthProvider>
       </body>
     </html>

@@ -10,7 +10,13 @@
   "workspaceFolder": "/input-attendance-nextjs",
   "customizations": {
     "vscode": {
-      "extensions": ["eamodio.gitlens", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "extensions": [
+        "eamodio.gitlens",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
       "settings": {
         "prettier.configPath": ".prettierrc.json",
         "editor.defaultFormatter": "esbenp.prettier-vscode",

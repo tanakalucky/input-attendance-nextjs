@@ -12,8 +12,17 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    session({ session }) {
+    session({ session, token }) {
+      if (token.accessToken) {
+        session.accessToken = token.accessToken;
+      }
       return session;
+    },
+    jwt({ token, account }) {
+      if (account?.access_token) {
+        token.accessToken = account.access_token;
+      }
+      return token;
     },
   },
 });

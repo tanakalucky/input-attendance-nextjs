@@ -7,5 +7,6 @@ declare namespace NodeJS {
     readonly COGNITO_CLIENT_ID: string;
     readonly COGNITO_CLIENT_SECRET: string;
     readonly COGNITO_ISSUER: string;
+    readonly NEXT_PUBLIC_GRAPHQL_URL: string;
   }
 }
