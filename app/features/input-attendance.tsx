@@ -60,7 +60,7 @@ export function InputAttendance() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Year</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} defaultValue={field.value?.toString()}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder='Select a year' />
@@ -84,7 +84,7 @@ export function InputAttendance() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Month</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} defaultValue={field.value?.toString()}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder='Select a month' />
