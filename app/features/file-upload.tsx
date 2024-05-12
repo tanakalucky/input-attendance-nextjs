@@ -25,6 +25,7 @@ import Image from 'next/image';
 import { ChangeEvent, SVGProps, useRef, useState } from 'react';
 import { getFileSizeWithUnit, fileToBase64 } from '@/app/utils/fileUtils';
 import { useMutation } from 'urql';
+import { toast } from 'sonner';
 
 const uploadMutation = `
   mutation UploadFile($encodedFile: String!) {
@@ -56,7 +57,12 @@ export function FileUpload() {
     const encodedFile = file ? await fileToBase64(file) : '';
 
     const variables = { encodedFile };
-    upload(variables).then((result) => console.log(result));
+
+    toast.promise(() => upload(variables), {
+      loading: 'In progress...',
+      success: 'File pload completed!',
+      error: 'Failed to file upload',
+    });
   };
 
   return (

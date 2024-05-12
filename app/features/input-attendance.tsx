@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { useMutation } from 'urql';
 import { z } from 'zod';
 
@@ -40,9 +41,14 @@ export function InputAttendance() {
     resolver: zodResolver(formSchema),
   });
 
-  const [_, inputAttendance] = useMutation(inputAttendanceMutation);
+  const [result, inputAttendance] = useMutation(inputAttendanceMutation);
+
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    inputAttendance(values).then((result) => console.log(result));
+    toast.promise(() => inputAttendance(values), {
+      loading: 'In progress...',
+      success: 'Input attendance completed!',
+      error: 'Failed to input attendance',
+    });
   };
 
   return (
@@ -96,7 +102,9 @@ export function InputAttendance() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' disabled={result.fetching}>
+          Submit
+        </Button>
       </form>
     </Form>
   );

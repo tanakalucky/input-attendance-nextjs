@@ -6,6 +6,7 @@ import { Session } from 'next-auth';
 import { Header } from '@/components/layouts/header';
 import clsx from 'clsx';
 import GraphqlProvider from '@/app/providers/graphql';
+import { Toaster } from '@/components/ui/sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,16 @@ export default function RootLayout({
           <GraphqlProvider>
             <Header />
             {children}
+            <Toaster
+              toastOptions={{
+                classNames: {
+                  loading: 'bg-white text-black border-gray-300',
+                  error: 'bg-red-500 text-white border-red-500',
+                  success: 'bg-green-500 text-white border-green-500',
+                },
+                duration: 2500,
+              }}
+            />
           </GraphqlProvider>
         </NextAuthProvider>
       </body>
