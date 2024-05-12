@@ -19,10 +19,11 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from 'next/link';
 import { SVGProps } from 'react';
+import SignButton from '@/components/layouts/signButton';
 
 export function Header() {
   return (
-    <header className='flex items-center h-16 px-4 border-b w-full md:px-6'>
+    <header className='flex items-center h-16 px-4 border-b w-full md:px-6 justify-between'>
       <Link className='mr-4' href='/'>
         <PackageIcon className='h-6 w-6' />
         <span className='sr-only'>Acme Inc</span>
@@ -35,6 +36,7 @@ export function Header() {
           Input
         </Link>
       </nav>
+      <SignButton />
     </header>
   );
 }
