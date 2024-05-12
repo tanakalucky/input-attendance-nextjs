@@ -29,10 +29,10 @@ export function Header() {
       </Link>
       <nav className='hidden space-x-4 md:flex flex-1 text-sm'>
         <Link className='font-medium hover:underline' href='/upload'>
-          アップロード
+          Upload
         </Link>
-        <Link className='font-medium hover:underline' href='#'>
-          入力
+        <Link className='font-medium hover:underline' href='/input-attendance'>
+          Input
         </Link>
       </nav>
     </header>
