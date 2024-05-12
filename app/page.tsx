@@ -17,6 +17,7 @@ export default function Home() {
             height='550'
             src='/input_attendance.webp'
             width='550'
+            priority={true}
           />
         </div>
       </div>
