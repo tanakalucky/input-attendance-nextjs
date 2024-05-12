@@ -66,7 +66,7 @@ export function FileUpload() {
   };
 
   return (
-    <div className='mx-auto max-w-md space-y-6'>
+    <div className='mx-auto max-w-md space-y-6 mt-10'>
       <div className='space-y-2 text-center'>
         <h2 className='text-2xl font-bold'>Upload Attendance File</h2>
         <p className='text-gray-500 dark:text-gray-400'>

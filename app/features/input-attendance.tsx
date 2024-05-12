@@ -53,7 +53,10 @@ export function InputAttendance() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-8 w-[90%] md:w-[50%] lg:w-[30%] m-auto'>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className='space-y-8 w-[90%] md:w-[50%] lg:w-[30%] mx-auto mt-10'
+      >
         <FormField
           control={form.control}
           name='targetYear'
