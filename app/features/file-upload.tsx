@@ -58,11 +58,19 @@ export function FileUpload() {
 
     const variables = { encodedFile };
 
-    toast.promise(() => upload(variables), {
-      loading: 'In progress...',
-      success: 'File pload completed!',
-      error: 'Failed to file upload',
-    });
+    toast.promise(
+      () =>
+        upload(variables).then((result) => {
+          if (result.error) {
+            throw new Error(result.error.message);
+          }
+        }),
+      {
+        loading: 'In progress...',
+        success: 'File pload completed!',
+        error: 'Failed to file upload',
+      },
+    );
   };
 
   return (

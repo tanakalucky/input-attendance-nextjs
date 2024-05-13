@@ -44,11 +44,19 @@ export function InputAttendance() {
   const [result, inputAttendance] = useMutation(inputAttendanceMutation);
 
   const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    toast.promise(() => inputAttendance(values), {
-      loading: 'In progress...',
-      success: 'Input attendance completed!',
-      error: 'Failed to input attendance',
-    });
+    toast.promise(
+      () =>
+        inputAttendance(values).then((result) => {
+          if (result.error) {
+            throw new Error(result.error.message);
+          }
+        }),
+      {
+        loading: 'In progress...',
+        success: 'Input attendance completed!',
+        error: 'Failed to input attendance',
+      },
+    );
   };
 
   return (
