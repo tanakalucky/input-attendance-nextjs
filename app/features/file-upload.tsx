@@ -64,6 +64,8 @@ export function FileUpload() {
           if (result.error) {
             throw new Error(result.error.message);
           }
+
+          setFile(undefined);
         }),
       {
         loading: 'In progress...',
