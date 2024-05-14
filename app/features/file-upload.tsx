@@ -22,7 +22,7 @@ To read more about using these font, please visit the Next.js documentation:
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { ChangeEvent, SVGProps, useRef, useState } from 'react';
+import { ChangeEvent, DragEvent, SVGProps, useRef, useState } from 'react';
 import { getFileSizeWithUnit, fileToBase64 } from '@/app/utils/fileUtils';
 import { useMutation } from 'urql';
 import { toast } from 'sonner';
@@ -51,6 +51,36 @@ export function FileUpload() {
     if (!file) return;
 
     setFile(file);
+  };
+
+  const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    e.currentTarget?.classList.toggle('bg-gray-200');
+  };
+
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    e.currentTarget?.classList.toggle('bg-gray-200');
+  };
+
+  const handleDrop = async (e: DragEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    e.currentTarget?.classList.toggle('bg-gray-200');
+    const files = e.dataTransfer.files;
+
+    if (files.length > 1) return alert('アップロードできるファイルは1つだけです。');
+
+    setFile(files[0]);
   };
 
   const handleSubmit = async () => {
@@ -83,7 +113,13 @@ export function FileUpload() {
           Drag and drop a file or click to select a file from your device.
         </p>
       </div>
-      <div className='rounded-md border border-gray-300 dark:border-gray-700 p-6 space-y-4'>
+      <div
+        className='rounded-md border border-gray-300 dark:border-gray-700 p-6 space-y-4'
+        onDragEnter={handleDragEnter}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
         <div>
           <div className='flex flex-col items-center justify-center space-y-2'>
             <UploadIcon className='h-8 w-8 text-gray-500 dark:text-gray-400' />
